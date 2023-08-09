@@ -1,4 +1,12 @@
-import { SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
+import {
+  // Image,
+  ImageBackground,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  FlatList
+} from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { StatusBar } from 'expo-status-bar'
 
@@ -65,18 +73,23 @@ const UpcomingWeather = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Upcoming Weather</Text>
-
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.dt_txt}
-        ListFooterComponent={
-          <View>
-            <Text>Footer</Text>
-          </View>
-        }
-      />
+      {/* <Image source={require('../../assets/clouds.jpg')} style={styles.image} /> */}
+      <ImageBackground
+        source={require('../../assets/clouds.jpg')}
+        style={styles.image}
+      >
+        <Text>Upcoming Weather</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt_txt}
+          ListFooterComponent={
+            <View>
+              <Text>Footer</Text>
+            </View>
+          }
+        />
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -86,7 +99,7 @@ const styles = StyleSheet.create({
     color: 'black',
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-    backgroundColor: 'red'
+    backgroundColor: 'royalblue'
   },
   item: {
     padding: 20,
@@ -105,6 +118,9 @@ const styles = StyleSheet.create({
   date: {
     color: 'white',
     fontSize: 15
+  },
+  image: {
+    flex: 1
   }
 })
 

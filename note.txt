@@ -1,0 +1,2 @@
+- When using network images, height needs to be defined explicitly.
+- Be mindful of storage sizes when using static images.
