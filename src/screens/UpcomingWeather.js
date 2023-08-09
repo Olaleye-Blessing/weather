@@ -5,7 +5,7 @@ import {
   FlatList
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import ListItem from '../ListItem'
+import ListItem from '../components/ListItem'
 
 const DATA = [
   {
@@ -59,9 +59,8 @@ const UpcomingWeather = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Image source={require('../../../assets/clouds.jpg')} style={styles.image} /> */}
       <ImageBackground
-        source={require('../../../assets/clouds.jpg')}
+        source={require('../../assets/clouds.jpg')}
         style={styles.image}
       >
         <FlatList

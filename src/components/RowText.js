@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native'
-import IconText from '../IconText'
+import IconText from './IconText'
 
 const RowText = ({ containerStyle, icons }) => {
   return (
