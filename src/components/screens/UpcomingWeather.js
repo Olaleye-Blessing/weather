@@ -1,10 +1,7 @@
 import {
-  // Image,
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
-  View,
   FlatList
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
@@ -67,16 +64,10 @@ const UpcomingWeather = () => {
         source={require('../../../assets/clouds.jpg')}
         style={styles.image}
       >
-        <Text>Upcoming Weather</Text>
         <FlatList
           data={DATA}
           renderItem={renderItem}
           keyExtractor={(item) => item.dt_txt}
-          ListFooterComponent={
-            <View>
-              <Text>Footer</Text>
-            </View>
-          }
         />
       </ImageBackground>
     </SafeAreaView>
