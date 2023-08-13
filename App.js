@@ -1,21 +1,10 @@
-import { useEffect, useState } from 'react'
 import { View, StyleSheet, ActivityIndicator } from 'react-native'
-import * as Location from 'expo-location'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from './src/components/Tabs'
-import { myLocation } from './src/utilities/myLocation'
+import { useGetWeather } from './src/hooks/useGetWeather'
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
-  const [location, setLocation] = useState(null)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    ;(async () => {
-      // Assume that location permission has been granted
-      setLocation(myLocation)
-    })()
-  }, [])
+  const { loading, error, weather } = useGetWeather()
 
   if (loading)
     return (
@@ -24,9 +13,17 @@ export default function App() {
       </View>
     )
 
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>{error}</Text>
+      </View>
+    )
+  }
+
   return (
     <NavigationContainer>
-      <Tabs />
+      <Tabs weather={weather} />
     </NavigationContainer>
   )
 }

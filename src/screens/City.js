@@ -5,24 +5,27 @@ import {
   StatusBar,
   Text
 } from 'react-native'
+import moment from 'moment'
 import RowText from '../components/RowText'
 
-const City = () => {
+const City = ({
+  weatherData: { name, country, population, sunrise, sunset }
+}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require('../../assets/sunset.jpg')}
         style={styles.imageLayout}
       >
-        <Text style={[styles.cityText, styles.cityName]}>London</Text>
-        <Text style={[styles.cityText, styles.countryName]}>UK</Text>
+        <Text style={[styles.cityText, styles.cityName]}>{name}</Text>
+        <Text style={[styles.cityText, styles.countryName]}>{country}</Text>
         <RowText
           containerStyle={styles.populationWrapper}
           icons={[
             {
               name: 'user',
               color: 'red',
-              body: '2,020,202',
+              body: population,
               style: styles.populationText
             }
           ]}
@@ -33,13 +36,13 @@ const City = () => {
             {
               name: 'sunrise',
               color: 'white',
-              body: '10:46:58',
+              body: moment(sunrise).format('h:mm:ss a'),
               style: styles.riseSetText
             },
             {
               name: 'sunset',
               color: 'white',
-              body: '17:28:15',
+              body: moment(sunset).format('h:mm:ss a'),
               style: styles.riseSetText
             }
           ]}
