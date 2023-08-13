@@ -2,6 +2,7 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from './src/components/Tabs'
 import { useGetWeather } from './src/hooks/useGetWeather'
+import ErrorItem from './src/components/ErrorItem'
 
 export default function App() {
   const { loading, error, weather } = useGetWeather()
@@ -16,7 +17,7 @@ export default function App() {
   if (error) {
     return (
       <View style={styles.container}>
-        <Text>{error}</Text>
+        <ErrorItem message={error} />
       </View>
     )
   }

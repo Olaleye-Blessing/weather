@@ -20,13 +20,12 @@ export const useGetWeather = () => {
       const req = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric`
       )
-
+      
       if (!req.ok) {
         throw new Error('Something went wrong!')
       }
 
       const res = await req.json()
-
       setWeather(res)
     } catch (error) {
       setError(error.message)
